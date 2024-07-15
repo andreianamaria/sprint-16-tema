@@ -20,8 +20,12 @@ const TodoItem = (props) => {
           </h4>
         </div>
         <div>
-          <i className="fa fa-pencil" aria-hidden="true"></i>
-          <i className="fa fa-trash" aria-hidden="true"></i>
+          <div onClick={props.onEdit} className={`edit-${props.id}`}>
+            <i className="fa fa-pencil" aria-hidden="true"></i>
+          </div>
+          <div onClick={props.onDelete} className={`delete-${props.id}`}>
+            <i className="fa fa-trash" aria-hidden="true"></i>
+          </div>
         </div>
       </div>
 

@@ -61,6 +61,21 @@ function App() {
       },
     ]);
   };
+  const handleEdit = (event) => {};
+  const handleDelete = (event) => {
+    const elParent = event.target.parentNode ? event.target.parentNode : null;
+    if (elParent) {
+      console.log(elParent.classList[0]);
+      let string = new String(elParent.classList[0]);
+      if (string.con)
+      // const taskIdEl = cardWrapperEl.querySelector(".task-id");
+      // if (taskIdEl) {
+      //   const taskId = taskIdEl.textContent;
+      //   const newTasks = formData.filter((task) => task.id !== taskId);
+      //   setFormData(newTasks);
+      // }
+    }
+  };
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
@@ -104,6 +119,8 @@ function App() {
                 title={todo.title}
                 description={todo.description}
                 completed={todo.completed}
+                onEdit={handleEdit}
+                onDelete={handleDelete}
               />
             ))}
           </div>
@@ -119,6 +136,8 @@ function App() {
                 title={todo.title}
                 description={todo.description}
                 completed={todo.completed}
+                onEdit={handleEdit}
+                onDelete={handleDelete}
               />
             ))}
           </div>
