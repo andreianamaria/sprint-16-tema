@@ -54,7 +54,7 @@ function App() {
     setTodos([
       ...todos,
       {
-        id: todos.length,
+        id: todos.length + 1,
         title: title,
         description: description,
         completed: false,
@@ -65,15 +65,21 @@ function App() {
   const handleDelete = (event) => {
     const elParent = event.target.parentNode ? event.target.parentNode : null;
     if (elParent) {
-      console.log(elParent.classList[0]);
-      let string = new String(elParent.classList[0]);
-      if (string.con)
-      // const taskIdEl = cardWrapperEl.querySelector(".task-id");
-      // if (taskIdEl) {
-      //   const taskId = taskIdEl.textContent;
-      //   const newTasks = formData.filter((task) => task.id !== taskId);
-      //   setFormData(newTasks);
-      // }
+      const classes = Array.from(elParent.classList);
+      const deleteClasses = classes.filter((item) => item.includes("delete-"));
+      let elemId = null;
+      if (deleteClasses[0]) {
+        elemId = deleteClasses[0].slice(-1);
+      }
+      console.log(elemId);
+      if (elemId) {
+        const newTasks = todos.filter((task) => {
+          console.log(task.id);
+          return task.id != elemId;
+        });
+        console.log(newTasks);
+        setTodos(newTasks);
+      }
     }
   };
 
