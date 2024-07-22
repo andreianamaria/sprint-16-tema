@@ -53,3 +53,7 @@ p {
   align-items: center;
   justify-content: flex-start;
 }
+
+.editing {
+  color: blue;
+}
